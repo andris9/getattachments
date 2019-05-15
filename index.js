@@ -19,10 +19,14 @@ streamer.on('node', data => {
     let extension = libmime.detectExtension(data.node.contentType || 'application/octet-stream');
     let filename = path.parse(data.node.filename || (data.node.contentType || 'attachment').split('/').shift() + '.' + extension);
 
-    let base = (filename.name || 'attachment').replace(/[\/\\]/g, '_').replace(/\.+/g, '.').replace(/[\x00-\x1F]/g, '_'); // eslint-disable-line no-control-regex
+    let base = (filename.name || 'attachment')
+        .replace(/[\/\\]/g, '_')
+        .replace(/\.+/g, '.')
+        .replace(/[\x00-\x1F]/g, '_'); // eslint-disable-line no-control-regex
     let fname;
     let i = 0;
-    while (1) { // eslint-disable-line no-constant-condition
+    while (1) {
+        // eslint-disable-line no-constant-condition
         fname = base + (i ? '-' + i : '') + filename.ext;
         i++;
         if (filenames.has(fname)) {
@@ -36,4 +40,8 @@ streamer.on('node', data => {
     data.done();
 });
 
-process.stdin.pipe(new Splitter()).pipe(streamer).pipe(new Joiner()).pipe(process.stdout);
+process.stdin
+    .pipe(new Splitter())
+    .pipe(streamer)
+    .pipe(new Joiner())
+    .pipe(process.stdout);

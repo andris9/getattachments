@@ -1,15 +1,19 @@
 {
-  "name": "getattachments",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "libmime": "^2.1.0",
-    "mailsplit": "^3.1.0"
-  },
-  "bin": {
-    "getattachments": "./index.js"
-  }
+    "name": "getattachments",
+    "version": "1.1.0",
+    "description": "Extarct mime parts from emails",
+    "main": "index.js",
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "libmime": "4.1.1",
+        "mailsplit": "4.4.1"
+    },
+    "bin": {
+        "getattachments": "./index.js"
+    },
+    "devDependencies": {
+        "eslint-config-nodemailer": "1.2.0",
+        "eslint-config-prettier": "4.2.0"
+    }
 }
